@@ -1,0 +1,1 @@
+export const ronswansonUrl = 'http://ron-swanson-quotes.herokuapp.com/v2/quotes';

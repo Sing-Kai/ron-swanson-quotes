@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Quote from './components/Quote';
+import {connect} from 'react-redux';
+import { fetchQuote } from './actions/ActionCreators';
+import './App.scss';
+import NewQuote from './components/NewQuote';
+// import * from './redux/ActionCreators';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const mapStateToProps = state =>{
+
+  return{
+    quote: state.quote
+  }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  fetchQuote: () => dispatch(fetchQuote())
+})
+
+class App extends Component {
+
+  componentDidMount(){
+    this.props.fetchQuote();
+  }
+
+  onClick = () =>{
+    this.props.fetchQuote();
+  }
+
+  render(){
+    return (
+        <div className = 'landing-body'>
+            <h1 className='landing-header'> 
+                <div className='header-primary'>
+                    <Quote quote = {this.props.quote}/> 
+                </div>
+                <NewQuote onClick= {this.onClick}/>
+            </h1>
+
+        </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

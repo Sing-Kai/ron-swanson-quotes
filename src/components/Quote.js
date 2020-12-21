@@ -9,6 +9,12 @@ const Quote =(props)=> {
     return (
         <div className='landing-header-main'>
             {quote}
+
+            
+            <div className='landing-header-sub'>
+            <p>Ron Swanson</p>
+            </div>
+
         </div>
     )
 }

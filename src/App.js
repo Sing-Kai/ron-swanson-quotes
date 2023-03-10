@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import { fetchQuote } from './actions/ActionCreators';
 import './App.scss';
 import NewQuote from './components/NewQuote';
-// import * from './redux/ActionCreators';
-
 
 const mapStateToProps = state =>{
 
